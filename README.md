@@ -1,14 +1,17 @@
-# Alice Le Corre — Portfolio landing page
+# Alice Le Corre portfolio landing page
 
-A minimal static landing page ready for GitHub + Vercel.
+Static HTML site for GitHub + Vercel.
+
+## Files
+- `index.html` — layout, links, CTA hover interaction and animated cursor
+- `hero-desktop.png` — supplied desktop artwork
+- `hero-mobile.png` — supplied mobile artwork
 
 ## Before publishing
-Open `index.html` and replace these placeholder URLs with your real links:
+Edit `index.html` and replace:
 - `https://YOUR-PORTFOLIO-URL.com`
-- `https://www.behance.net/alicelecorre` (update if needed)
 - `https://www.linkedin.com/in/YOUR-LINKEDIN-SLUG/`
 
-The page uses `hero.png` as the full-screen visual and transparent, accessible links over the CTA and contact details. Keep `hero.png` in the same folder as `index.html`.
+The email and Behance links are filled in from the design. The mobile artwork is used automatically at viewport widths of 700px or less.
 
-## Deploy
-Import this folder/repository into Vercel. No build command or framework preset is needed; it is a static HTML site.
+Deploy as a static site on Vercel; no build command is required.
