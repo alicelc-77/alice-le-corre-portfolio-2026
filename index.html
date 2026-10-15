@@ -10,21 +10,19 @@
     :root { --page-bg: #F7F6F2; --cta: #ff5034; }
     * { box-sizing: border-box; }
     html, body { margin: 0; min-height: 100%; background: var(--page-bg); }
-    body { min-height: 100svh; display: grid; place-items: center; overflow-x: hidden; }
+    body { min-height: 100svh; display: grid; place-items: center; overflow: hidden; }
     .landing {
       position: relative;
-      width: min(100vw, 2048px, calc(100svh * 1.4065934));
-      aspect-ratio: 2048 / 1456;
-      flex: none;
+      width: 100vw;
+      height: 100svh;
       overflow: hidden;
       background: var(--page-bg);
     }
-    .artwork { display: block; width: 100%; height: 100%; object-fit: contain; }
-    .hotspot { position: absolute; z-index: 3; display: block; color: inherit; }
+    .artwork { display: block; width: 100%; height: 100%; object-fit: fill; }
+    .hotspot { position: absolute; z-index: 2; display: block; color: inherit; }
     .hotspot:focus-visible { outline: 3px solid var(--cta); outline-offset: 4px; border-radius: 999px; }
-    /* Transparent clickable areas aligned to the links already shown in the artwork. */
     .cta {
-      left: 41.2%; top: 54.2%; width: 16.4%; height: 7.5%;
+      left: 41.5%; top: 52.3%; width: 16.5%; height: 8.1%;
       border-radius: 999px; cursor: pointer;
       transition: transform 180ms ease, filter 180ms ease;
     }
@@ -36,49 +34,29 @@
     .cta:hover { transform: scale(1.035); filter: drop-shadow(0 5px 10px rgb(255 80 52 / 20%)); }
     .cta:hover::before { opacity: .13; transform: scale(1.04); }
     .cta:active { transform: scale(.985); }
-    .phone { left: 5.4%; top: 17.6%; width: 15%; height: 2.3%; }
-    .email { left: 5.4%; top: 20.2%; width: 15%; height: 2.3%; }
-    .behance { left: 5.4%; top: 22.7%; width: 15%; height: 2.3%; }
-    .linkedin { left: 5.4%; top: 25.2%; width: 15%; height: 2.3%; }
-    .cursor-cleanup {
-      position: absolute; z-index: 3; pointer-events: none;
-      background: var(--cta);
+    .phone { left: 5.4%; top: 19.1%; width: 15%; height: 2.4%; }
+    .email { left: 5.4%; top: 21.7%; width: 15%; height: 2.4%; }
+    .behance { left: 5.4%; top: 24.3%; width: 15%; height: 2.4%; }
+    .linkedin { left: 5.4%; top: 26.9%; width: 15%; height: 2.4%; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
     }
-    .cursor-cleanup::after {
-      content: ""; position: absolute; left: 0; right: 0; top: 100%;
-      height: 42%; background: #ff9d86;
-    }
-    .mobile-cleanup { display: none; left: 71.2%; top: 59.5%; width: 6.1%; height: 2.9%; }\n    .desktop-cleanup { left: 56.1%; top: 59.2%; width: 2.9%; height: 2.6%; }
-    .pointer {
-      position: absolute; z-index: 4; left: 55.6%; top: 59.1%;
-      width: 3.2%; height: auto; overflow: visible; pointer-events: none;
-      transform-origin: 12% 8%;
-      animation: pointerMove 2.8s ease-in-out infinite;
-      filter: drop-shadow(0 1px 0 rgba(0,0,0,.12));
-    }
-    @keyframes pointerMove {
-      0%, 100% { transform: translate(0, 0) rotate(-3deg); }
-      35% { transform: translate(-9px, -7px) rotate(-7deg); }
-      55% { transform: translate(-3px, -2px) rotate(-2deg); }
-      72% { transform: translate(2px, 1px) rotate(0deg); }
-    }
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     @media (max-width: 700px) {
+      body { overflow: auto; }
       .landing {
         width: min(100vw, 786px, calc(100svh * 0.4612676));
+        height: auto;
         aspect-ratio: 786 / 1704;
       }
+      .artwork { object-fit: fill; }
       .cta { left: 25%; top: 56.7%; width: 52.5%; height: 7.5%; }
       .email { left: 18.3%; top: 28.4%; width: 48%; height: 2%; }
       .behance { left: 18.3%; top: 31.1%; width: 40%; height: 2%; }
       .linkedin { left: 18.3%; top: 33.7%; width: 40%; height: 2%; }
       .phone { display: none; }
-      .desktop-cleanup { display: none; }
-      .mobile-cleanup { display: block; left: 71.2%; top: 59.5%; width: 6.1%; height: 2.9%; }
-      .pointer { left: 71.4%; top: 60%; width: 6.2%; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .pointer { animation: none; }
       .cta, .cta::before { transition: none; }
     }
   </style>
@@ -91,18 +69,13 @@
     </picture>
 
     <!-- Replace these URLs with your own links. -->
-    <a class="hotspot cta" href="https://drive.google.com/file/d/1Bc1WsTO2WHpukL6wxwxxQB62QcBTVeXd/view" aria-label="View my work">
+    <a class="hotspot cta" href="https://YOUR-PORTFOLIO-URL.com" aria-label="View my work">
       <span class="sr-only">View my work</span>
     </a>
     <a class="hotspot phone" href="tel:+33629880385" aria-label="Call Alice Le Corre"><span class="sr-only">Phone</span></a>
     <a class="hotspot email" href="mailto:le.corre.alice@gmail.com" aria-label="Email Alice Le Corre"><span class="sr-only">Email</span></a>
     <a class="hotspot behance" href="https://www.behance.net/alicelecorre" target="_blank" rel="noopener noreferrer" aria-label="Open Behance profile"><span class="sr-only">Behance</span></a>
-    <a class="hotspot linkedin" href="https://www.linkedin.com/in/alicelecorre/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile"><span class="sr-only">LinkedIn</span></a>
-
-    <div class="cursor-cleanup desktop-cleanup" aria-hidden="true"></div>\n    <div class="cursor-cleanup mobile-cleanup" aria-hidden="true"></div>\n    <svg class="pointer" viewBox="0 0 44 58" aria-hidden="true">
-      <path d="M3 2 L3 43 L13 33 L21 52 L29 48 L21 30 L37 30 Z" fill="#fff" stroke="#111" stroke-width="3.2" stroke-linejoin="round"/>
-      <path d="M6 7 L6 36 L13 29 L22 47 L25 45 L16 27 L31 27 Z" fill="#fff"/>
-    </svg>
+    <a class="hotspot linkedin" href="https://www.linkedin.com/in/YOUR-LINKEDIN-SLUG/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile"><span class="sr-only">LinkedIn</span></a>
   </main>
 </body>
 </html>
